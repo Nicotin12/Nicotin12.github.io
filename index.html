@@ -119,7 +119,7 @@
       </svg>
       <!-- form -->
       <div class="form-send text-center">
-        <form class="contactt">
+        <form name="contact-syafiq" class="contactt">
           <div class="title">
             <h3>Contact Me</h3>
           </div>
@@ -132,5 +132,20 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzuQfrodGxnh9Nqw6mzQWn1YfvS-w8rb4F_1vxUN28qY4bGRdriVD8DlE1i-HZOIpPSig/exec";
+      const form = document.forms["contact-syafiq"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
